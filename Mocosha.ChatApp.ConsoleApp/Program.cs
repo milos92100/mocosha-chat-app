@@ -22,8 +22,7 @@ namespace Mocosha.ChatApp.ConsoleApp
                 win.ConctactsPanel.SetContactsList(new List<String>(new string[] {
                 "Milos Stojanovic (milos)",
                 "Pera Peric (pera)",
-                "Ivana Stojanovic (ivana)",
-                "Joh Dou (johny)",
+                "Johb Dow (johny)",
                 "Will Smith (will)"
             }));
 
