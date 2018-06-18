@@ -60,7 +60,6 @@ namespace Mocosha.ChatApp
 
         protected override void OnMessage(MessageEventArgs e)
         {
-
             Console.WriteLine($"Chat received: {e.Data}");
             var message = JsonConvert.DeserializeObject<Message>(e.Data);
 
@@ -88,6 +87,35 @@ namespace Mocosha.ChatApp
         }
     }
 
+
+    public class Notification : WebSocketBehavior
+    {
+        protected override void OnOpen()
+        {
+            base.OnOpen();
+            var name = Context.CookieCollection["username"];
+
+            if (name != null)
+            {
+
+                foreach (var user in Program.serverClients.Keys)
+                {
+
+                    string json = JsonConvert.SerializeObject(new Core.Messages.Notification
+                    {
+                        Id = Guid.NewGuid().ToString(),
+                        Action = Core.Messages.Notification.ActionType.CONNECTED,
+                        User = user
+
+                    });
+
+                    Sessions.SendTo(json, ID);
+                }
+
+            }
+        }
+    }
+
     public class Program
     {
         public static Dictionary<string, string> serverClients = new Dictionary<string, string>();
@@ -97,6 +125,7 @@ namespace Mocosha.ChatApp
         {
             var wssv = new WebSocketServer("ws://127.0.0.1:1992");
             wssv.AddWebSocketService<Chat>("/Chat");
+            wssv.AddWebSocketService<Chat>("/Notification");
             wssv.Start();
 
             Console.Title = "Chat Server";

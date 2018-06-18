@@ -11,9 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mocosha.ChatApp.Core", "Moc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mocosha.ChatApp.Library", "Mocosha.ChatApp.Library\Mocosha.ChatApp.Library.csproj", "{447C42F0-D30C-4F9D-9B1B-FC31A0E65034}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mocosha.ChatApp.ClientWindows", "Mocosha.ChatApp.ClientWindows\Mocosha.ChatApp.ClientWindows.csproj", "{3E1435ED-09B6-4784-990E-0921C5C173D7}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mocosha.ChatApp.ConsoleApp", "Mocosha.ChatApp.ConsoleApp\Mocosha.ChatApp.ConsoleApp.csproj", "{82609DBF-4A3E-42C5-9C23-273BED26EAF9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mocosha.ChatApp.ConsoleApp", "Mocosha.ChatApp.ConsoleApp\Mocosha.ChatApp.ConsoleApp.csproj", "{82609DBF-4A3E-42C5-9C23-273BED26EAF9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,10 +35,6 @@ Global
 		{447C42F0-D30C-4F9D-9B1B-FC31A0E65034}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{447C42F0-D30C-4F9D-9B1B-FC31A0E65034}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{447C42F0-D30C-4F9D-9B1B-FC31A0E65034}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3E1435ED-09B6-4784-990E-0921C5C173D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3E1435ED-09B6-4784-990E-0921C5C173D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3E1435ED-09B6-4784-990E-0921C5C173D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3E1435ED-09B6-4784-990E-0921C5C173D7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{82609DBF-4A3E-42C5-9C23-273BED26EAF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{82609DBF-4A3E-42C5-9C23-273BED26EAF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{82609DBF-4A3E-42C5-9C23-273BED26EAF9}.Release|Any CPU.ActiveCfg = Release|Any CPU

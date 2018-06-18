@@ -36,6 +36,22 @@ namespace Mocosha.ChatApp.Client
             _sereverResponded = true;
         }
 
+        protected static void NotificationReceived(object sender, MessageEventArgs e, string myName)
+        {
+            var msg = JsonConvert.DeserializeObject<Notification>(e.Data);
+
+            switch (msg.Action)
+            {
+                case Notification.ActionType.CONNECTED:
+                    Console.WriteLine("Server: " + msg.User + " has connected");
+                    break;
+
+                case Notification.ActionType.DISCONECTED:
+                    Console.WriteLine("Server: " + msg.User + " has disconnected");
+                    break;
+            }
+        }
+
         static void Main(string[] args)
         {
 
@@ -44,6 +60,28 @@ namespace Mocosha.ChatApp.Client
             string myName = Console.ReadLine();
             Console.Title = myName;
 
+
+            using (var ws = new WebSocket("ws://127.0.0.1:1992/Notification"))
+            {
+                ws.SetCookie(new WebSocketSharp.Net.Cookie { Name = "username", Value = myName });
+                ws.OnMessage += ((sender, e) => { NotificationReceived(sender, e, myName); });
+
+                ws.OnOpen += ((sender, e) =>
+                {
+                    Console.WriteLine("Connection (Notification) opened");
+                });
+
+
+                ws.OnError += ((sender, e) =>
+                {
+                    Console.WriteLine($"Error: {e.Message}");
+                    _sereverResponded = true;
+                });
+
+                ws.Connect();
+
+            }
+
             using (var ws = new WebSocket("ws://127.0.0.1:1992/Chat"))
             {
                 ws.SetCookie(new WebSocketSharp.Net.Cookie { Name = "username", Value = myName });
@@ -51,7 +89,7 @@ namespace Mocosha.ChatApp.Client
 
                 ws.OnOpen += ((sender, e) =>
                 {
-                    Console.WriteLine("Connection opened");
+                    Console.WriteLine("Connection (Chat) opened");
                 });
 
 
@@ -93,6 +131,9 @@ namespace Mocosha.ChatApp.Client
                     while (!_sereverResponded) { Thread.Sleep(10); }
                 }
             }
+
+
+
         }
     }
 }

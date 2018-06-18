@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Mocosha.ChatApp.ConsoleApp\Mocosha.ChatApp.ConsoleApp.csproj" />
     <ProjectReference Include="..\Mocosha.ChatApp.Core\Mocosha.ChatApp.Core.csproj" />
   </ItemGroup>
 
